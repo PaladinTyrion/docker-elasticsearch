@@ -74,7 +74,6 @@ ENV ES_PACKAGE elasticsearch-${ES_VERSION}.tar.gz
 RUN curl -O https://artifacts.elastic.co/downloads/elasticsearch/${ES_PACKAGE} \
     && tar -xzf ${ES_PACKAGE} -C ${ES_HOME} --strip-components=1 \
     && rm -f ${ES_PACKAGE} \
-    && apt-get remove --purge ca-certificates wget curl \
     && apt-get autoremove \
 		&& apt-get autoclean
 
@@ -136,4 +135,4 @@ RUN chmod +x /usr/local/bin/replace_ips.sh \
 EXPOSE 9200 9300
 VOLUME ["/var/lib/elasticsearch"]
 
-CMD [ "/usr/local/bin/start.sh", "$@" ]
+ENTRYPOINT [ "/usr/local/bin/start.sh", "$@" ]
