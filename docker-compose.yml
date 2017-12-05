@@ -1,0 +1,13 @@
+# Docker Compose file for elasticsearch
+
+# Build with:
+# docker-compose build elasticsearch
+
+# Run with:
+# docker-compose up
+
+elasticsearch:
+  build: .
+  ports:
+    - "9200:9200"
+    - "9300:9300"
