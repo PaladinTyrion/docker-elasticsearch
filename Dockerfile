@@ -74,6 +74,7 @@ ENV ES_PACKAGE elasticsearch-${ES_VERSION}.tar.gz
 RUN curl -O https://artifacts.elastic.co/downloads/elasticsearch/${ES_PACKAGE} \
     && tar -xzf ${ES_PACKAGE} -C ${ES_HOME} --strip-components=1 \
     && rm -f ${ES_PACKAGE} \
+    && rm -fr /tmp/* \
     && apt-get autoremove \
 		&& apt-get autoclean
 
