@@ -46,6 +46,7 @@ RUN set -x \
 		&& apt-get install -qqy openjdk-8-jdk \
 		&& ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
 		&& apt-get clean \
+    && rm -fr /tmp/* \
 		&& set +x
 
 ###############################################################################
@@ -74,7 +75,6 @@ ENV ES_PACKAGE elasticsearch-${ES_VERSION}.tar.gz
 RUN curl -O https://artifacts.elastic.co/downloads/elasticsearch/${ES_PACKAGE} \
     && tar -xzf ${ES_PACKAGE} -C ${ES_HOME} --strip-components=1 \
     && rm -f ${ES_PACKAGE} \
-    && rm -fr /tmp/* \
     && apt-get autoremove \
 		&& apt-get autoclean
 
