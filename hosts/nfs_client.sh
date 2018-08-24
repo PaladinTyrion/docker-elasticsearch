@@ -34,8 +34,8 @@ chown -R kibana:kibana /data0/elk/kibana
 local_ip=`/sbin/ifconfig -a | grep inet | grep -v 127.0.0.1 | grep -v inet6 | awk '{print $2}' | tr -d "addr:" | head -n 1`
 
 # elk mount dir
-echo "10.85.92.7:/data2/${local_ip}.elk/elasticsearch /data0/elk/elasticsearch nfs auto,soft,bg,intr,rw,rsize=262144,wsize=262144 0 0" >> /etc/fstab
-echo "10.85.92.7:/data2/${local_ip}.elk/kibana /data0/elk/kibana nfs auto,soft,bg,intr,rw,rsize=262144,wsize=262144 0 0" >> /etc/fstab
+echo "10.10.10.1:/data2/${local_ip}.elk/elasticsearch /data0/elk/elasticsearch nfs auto,soft,bg,intr,rw,rsize=262144,wsize=262144 0 0" >> /etc/fstab
+echo "10.10.10.1:/data2/${local_ip}.elk/kibana /data0/elk/kibana nfs auto,soft,bg,intr,rw,rsize=262144,wsize=262144 0 0" >> /etc/fstab
 
 # mount
 mount -a
